@@ -10,3 +10,6 @@ fetch("https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/Ereich%2523210
 .catch(err => {
 	console.error(err);
 });
+
+var output = document.getElementById("output");
+output.innerHTML = "TESYT";
