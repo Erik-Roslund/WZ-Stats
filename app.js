@@ -1,5 +1,6 @@
 
 var output = document.getElementById("output1");
+var container = document.getElementById("container");
 
 document.querySelector("form").addEventListener("submit", (event) => {
 	event.preventDefault();
@@ -33,6 +34,7 @@ function presentUserStats(playerName, platform) {
 					// nameTitle.innerText = playerInput;
 					// output.append(nameTitle);
 					console.log(data);
+					container.append(playerName);
 					output.append(playerStatBr(data.br.kdRatio, data.br.kills, data.br.deaths, data.br.wins, data.br.topFive, data.br.timePlayed, data.br.gamesPlayed, data.br.contracts));
 					output.append(playerStatBrDmz(data.br_dmz.kdRatio, data.br_dmz.kills, data.br_dmz.deaths, data.br_dmz.wins, data.br_dmz.topFive, data.br_dmz.timePlayed, data.br_dmz.gamesPlayed, data.br_dmz.contracts));
 				})
