@@ -35,7 +35,8 @@ function presentUserStats(playerName, platform) {
 					// output.append(nameTitle);
 					
 					output.append(playerStatBr(data.br.kdRatio, data.br.kills, data.br.deaths, data.br.wins, data.br.topFive, data.br.timePlayed, data.br.gamesPlayed, data.br.contracts));
-					// output.append(playerStatBrDmz(data.br_dmz.kdRatio, data.br_dmz.kills, data.br_dmz.deaths, data.br_dmz.wins, data.br_dmz.topFive, data.br_dmz.timePlayed, data.br_dmz.gamesPlayed, data.br_dmz.contracts));
+					output.append(playerStatBr(data.br_dmz.kdRatio, data.br_dmz.kills, data.br_dmz.deaths, data.br_dmz.wins, data.br_dmz.topFive, data.br_dmz.timePlayed, data.br_dmz.gamesPlayed, data.br_dmz.contracts));
+					output.append(playerStatBr(data.br.kdRatio, data.br.kills, data.br.deaths, data.br.wins, data.br.topFive, data.br.timePlayed, data.br.gamesPlayed, data.br.contracts));
 				})
 				.catch(err => {
 					console.error(err);
@@ -48,56 +49,111 @@ function presentUserStats(playerName, platform) {
 //BattleRoyale Stats
 
 function playerStatBr(kdRatio, kills, deaths, wins, topFive, timePlayed, gamesPlayed, contracts) {
+	
+	//div items
 	let BrItems = document.createElement("div");
 	BrItems.classList.add("items");
 
-	let BrItemsHead = document.createElement("div");
-	BrItemsHead.classList.add("items-head");
-	BrItems.append(BrItemsHead);
+		//div items-head
+		let BrItemsHead = document.createElement("div");
+		BrItemsHead.classList.add("items-head");
+		BrItems.append(BrItemsHead);
+
+			//p title
+			let BrTitle = document.createElement("p");
+			BrTitle.innerText = "Battle Royale"
+			BrItemsHead.append(BrTitle);
+
+		//div items-body
+		let BrItemsBody = document.createElement("div");
+		BrItemsBody.classList.add("items-body");
+		BrItems.append(BrItemsBody);
+
+			//div items-body-content KD
+			let BrItemsBodyKd = document.createElement("div");
+			BrItemsBodyKd.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyKd);
+
+				//KD
+				let playerKdStat = document.createElement("span");
+				playerKdStat.innerText = "KD: " + kdRatio.toFixed(2);
+				BrItemsBodyKd.append(playerKdStat);
 
 
-	//KD
-	let playerKdStat = document.createElement("div");
-	playerKdStat.innerText = "KD: " + kdRatio.toFixed(2);
-	playerBrStatContainer.append(playerKdStat);
+			//div items-body-content KILLS
+			let BrItemsBodyKill = document.createElement("div");
+			BrItemsBodyKill.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyKill);	
+				
+				//Kills-stat
+				let playerKillStat = document.createElement("span");
+				playerKillStat.innerText = "Kills: " + kills;
+				BrItemsBodyKill.append(playerKillStat);
 
-	//Kills-stat
-	let playerKillStat = document.createElement("div");
-	playerKillStat.innerText = "Kills: " + kills;
-	playerBrStatContainer.append(playerKillStat);
+			//div items-body-content DEATHS
+			let BrItemsBodyDeath = document.createElement("div");
+			BrItemsBodyDeath.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyDeath);
+				
+				//Deaths-stat
+				let playerDeathStat = document.createElement("span");
+				playerDeathStat.innerText = "Deaths: " + deaths;
+				BrItemsBodyDeath.append(playerDeathStat);
 
-	//Deaths-stat
-	let playerDeathStat = document.createElement("div");
-	playerDeathStat.innerText = "Deaths: " + deaths;
-	playerBrStatContainer.append(playerDeathStat);
+			//div items-body-content CONTRACT
+			let BrItemsBodyContract = document.createElement("div");
+			BrItemsBodyContract.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyContract);			
+				
+				//Contract-stat
+				let playerContractsStat = document.createElement("span");
+				playerContractsStat.innerText = "Contracts: " + contracts;
+				BrItemsBodyContract.append(playerContractsStat);
 
-	//Contract-stat
-	let playerContractsStat = document.createElement("div");
-	playerContractsStat.innerText = "Contracts: " + contracts;
-	playerBrStatContainer.append(playerContractsStat);
+			//div items-body-content WIN
+			let BrItemsBodyWin = document.createElement("div");
+			BrItemsBodyWin.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyWin);
 
-	//Wins-stat
-	let playerWinsStat = document.createElement("div");
-	playerWinsStat.innerText = "Wins: " + wins;
-	playerBrStatContainer.append(playerWinsStat);
+				//Wins-stat
+				let playerWinsStat = document.createElement("span");
+				playerWinsStat.innerText = "Wins: " + wins;
+				BrItemsBodyWin.append(playerWinsStat);
 
-	//Top5-stat
-	let playerTopFiveStat = document.createElement("div");
-	playerTopFiveStat.innerText = "Top 5: " + topFive;
-	playerBrStatContainer.append(playerTopFiveStat);
+			//div items-body-content TOP5
+			let BrItemsBodyTop5 = document.createElement("div");
+			BrItemsBodyTop5.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyTop5);
 
-	//Playtime-stat
-	let playerPlayTimeStat = document.createElement("div");
-	playerPlayTimeStat.innerText = "Playtime: " + Math.round((timePlayed / 60) / 60) + " h";
-	playerBrStatContainer.append(playerPlayTimeStat);
+				//Top5-stat
+				let playerTopFiveStat = document.createElement("span");
+				playerTopFiveStat.innerText = "Top 5: " + topFive;
+				BrItemsBodyTop5.append(playerTopFiveStat);
 
-	//GamesPlayed-stat
-	let playerGamesPlayedStat = document.createElement("div");
-	playerGamesPlayedStat.innerText = "Games Played: " + gamesPlayed;
-	playerBrStatContainer.append(playerGamesPlayedStat);
+			//div items-body-content PLAYTIME
+			let BrItemsBodyPlaytime = document.createElement("div");
+			BrItemsBodyPlaytime.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyPlaytime);
 
-	return playerBrStatContainer;
+				//Playtime-stat
+				let playerPlayTimeStat = document.createElement("span");
+				playerPlayTimeStat.innerText = "Playtime: " + Math.round((timePlayed / 60) / 60) + " h";
+				BrItemsBodyPlaytime.append(playerPlayTimeStat);
+
+			//div items-body-content GAMESPLAYED
+			let BrItemsBodyGames = document.createElement("div");
+			BrItemsBodyGames.classList.add("items-body-content");
+			BrItemsBody.append(BrItemsBodyGames);
+
+				//GamesPlayed-stat
+				let playerGamesPlayedStat = document.createElement("span");
+				playerGamesPlayedStat.innerText = "Games Played: " + gamesPlayed;
+				BrItemsBodyGames.append(playerGamesPlayedStat);
+
+	return BrItems;
 }
+
+
 
 //Plunder Stats
 
