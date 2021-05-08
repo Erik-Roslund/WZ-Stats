@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
 
 :root {
-  --back: rgb(70, 71, 73);
+  --back: rgb(71, 71, 75);
   --prim1: #1a1a1a;
   --prim2: #313131;
-  --hint1: #0b5aa2;
-  --hint2: lightblue;
+  --hint1: hsl(202, 83%, 60%);
+  --hint2: rgb(133, 214, 241);
 }
 
 body {

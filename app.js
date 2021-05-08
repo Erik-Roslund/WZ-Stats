@@ -1,5 +1,6 @@
 
 var output = document.getElementById("output1");
+var statTitle = " "
 // var container = document.getElementById("container");
 
 document.querySelector("form").addEventListener("submit", (event) => {
@@ -30,13 +31,22 @@ function presentUserStats(playerName, platform) {
 				.then(response => response.json())
 				.then((data) => {
 					document.querySelector("#output1").innerHTML = " ";
-					// let	nameTitle = document.createElement("h2");
-					// nameTitle.innerText = playerInput;
-					// output.append(nameTitle);
-					
-					output.append(playerStatBr(data.br.kdRatio, data.br.kills, data.br.deaths, data.br.wins, data.br.topFive, data.br.timePlayed, data.br.gamesPlayed, data.br.contracts));
-					output.append(playerStatBr(data.br_dmz.kdRatio, data.br_dmz.kills, data.br_dmz.deaths, data.br_dmz.wins, data.br_dmz.topFive, data.br_dmz.timePlayed, data.br_dmz.gamesPlayed, data.br_dmz.contracts));
-					output.append(playerStatBr(data.br.kdRatio, data.br.kills, data.br.deaths, data.br.wins, data.br.topFive, data.br.timePlayed, data.br.gamesPlayed, data.br.contracts));
+					console.log(data);					
+					for(i = 0; i < 3; i++){
+						if (i = 1){
+							statTitle = "Battle Royale"
+							output.append(playerStatBr(data.br.kdRatio, data.br.kills, data.br.deaths, data.br.wins, data.br.topFive, data.br.timePlayed, data.br.gamesPlayed, data.br.contracts));
+						}
+						if (i = 2){
+							statTitle = "Plunder"
+							output.append(playerStatBr(data.br_dmz.kdRatio, data.br_dmz.kills, data.br_dmz.deaths, data.br_dmz.wins, data.br_dmz.topFive, data.br_dmz.timePlayed, data.br_dmz.gamesPlayed, data.br_dmz.contracts));							
+						}
+						if (i = 3){
+							statTitle = "Overall"
+							output.append(playerStatBr(data.br_all.kdRatio, data.br_all.kills, data.br_all.deaths, data.br_all.wins, data.br_all.topFive, data.br_all.timePlayed, data.br_all.gamesPlayed, data.br_all.contracts));
+
+						}
+					}
 				})
 				.catch(err => {
 					console.error(err);
@@ -61,7 +71,7 @@ function playerStatBr(kdRatio, kills, deaths, wins, topFive, timePlayed, gamesPl
 
 			//p title
 			let BrTitle = document.createElement("p");
-			BrTitle.innerText = "Battle Royale"
+			BrTitle.innerText = statTitle;
 			BrItemsHead.append(BrTitle);
 
 		//div items-body
@@ -152,59 +162,3 @@ function playerStatBr(kdRatio, kills, deaths, wins, topFive, timePlayed, gamesPl
 
 	return BrItems;
 }
-
-
-
-//Plunder Stats
-
-// function playerStatBrDmz(kdRatio, kills, deaths, wins, topFive, timePlayed, gamesPlayed, contracts) {
-// 	let playerBrDmzStatContainer = document.createElement("div");
-// 	playerBrDmzStatContainer.classList.add("player-stat-container");
-
-// 	let brDmzTitle = document.createElement("h3");
-// 	brDmzTitle.innerText = "Plunder";
-// 	playerBrDmzStatContainer.append(brDmzTitle);
-
-
-// 	//KD
-// 	let playerKdStat = document.createElement("div");
-// 	playerKdStat.innerText = "KD: " + kdRatio.toFixed(2);
-// 	playerBrDmzStatContainer.append(playerKdStat);
-
-// 	//Kills-stat
-// 	let playerKillStat = document.createElement("div");
-// 	playerKillStat.innerText = "Kills: " + kills;
-// 	playerBrDmzStatContainer.append(playerKillStat);
-
-// 	//Deaths-stat
-// 	let playerDeathStat = document.createElement("div");
-// 	playerDeathStat.innerText = "Deaths: " + deaths;
-// 	playerBrDmzStatContainer.append(playerDeathStat);
-
-// 	//Contract-stat
-// 	let playerContractsStat = document.createElement("div");
-// 	playerContractsStat.innerText = "Contracts: " + contracts;
-// 	playerBrDmzStatContainer.append(playerContractsStat);
-
-// 	//Wins-stat
-// 	let playerWinsStat = document.createElement("div");
-// 	playerWinsStat.innerText = "Wins: " + wins;
-// 	playerBrDmzStatContainer.append(playerWinsStat);
-
-// 	//Top5-stat
-// 	let playerTopFiveStat = document.createElement("div");
-// 	playerTopFiveStat.innerText = "Top 5: " + topFive;
-// 	playerBrDmzStatContainer.append(playerTopFiveStat);
-
-// 	//Playtime-stat
-// 	let playerPlayTimeStat = document.createElement("div");
-// 	playerPlayTimeStat.innerText = "Playtime: " + Math.round((timePlayed / 60) / 60) + " h";
-// 	playerBrDmzStatContainer.append(playerPlayTimeStat);
-
-// 	//GamesPlayed-stat
-// 	let playerGamesPlayedStat = document.createElement("div");
-// 	playerGamesPlayedStat.innerText = "Games Played: " + gamesPlayed;
-// 	playerBrDmzStatContainer.append(playerGamesPlayedStat);
-
-// 	return playerBrDmzStatContainer;
-// }
