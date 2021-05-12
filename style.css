@@ -64,9 +64,12 @@ nav {
 
 #playerInput {
   height: 30px;
-  border-style: none;
+  border-style: solid;
   text-decoration: none;
   outline: none;
+  box-shadow: 2px 2px 10px #000;
+  border-color: var(--prim2);
+  border-radius: 4px;
 }
 
 #navBarRow2 {
@@ -80,6 +83,7 @@ nav {
   opacity: 0;
   position: fixed;
   width: 0;
+  box-shadow: 2px 2px 10px #000;
 }
 
 #navBarRow1 label {
@@ -91,16 +95,19 @@ nav {
   font-family: "Cairo", sans-serif;
   margin: 0px 3px;
   transition: 0.3s;
+  box-shadow: 2px 2px 10px #000;
 }
 
 #navBarRow1 input[type="radio"]:checked + label {
   background-color: var(--hint1);
   color: black;
+  box-shadow: 2px 2px 10px #000;
 }
 
 #navBarRow1 label:hover {
   background-color: var(--hint2);
   color: black;
+  box-shadow: 2px 2px 10px #000;
 }
 
 button {
@@ -110,6 +117,7 @@ button {
   border-style: none;
   width: 35px;
   transition: 0.3s;
+  box-shadow: 2px 2px 10px #000;
 }
 
 button:hover {
@@ -133,6 +141,10 @@ button img {
   margin-bottom: 40px;
 }
 
+#help img {
+  box-shadow: 2px 5px 10px #000;
+}
+
 #output1 {
   top: 0;
   right: 0;
@@ -149,6 +161,7 @@ button img {
   background: var(--prim1);
   box-shadow: 0 3px 6px rgba(black, 0.16), 0 3px 6px rgba(black, 0.23);
   border-top: 10px solid var(--hint1);
+  box-shadow: 2px 5px 10px #000;
 }
 
 .items-head p {
@@ -189,6 +202,7 @@ footer {
   justify-content: center;
   align-content: center;
   background-color: var(--prim1);
+  text-shadow: 2px 2px 10px #000;
 }
 
 footer div {
@@ -197,11 +211,16 @@ footer div {
 
 h3 {
   color: var(--hint1);
+  text-shadow: 2px 2px 10px #000;
 }
 
 #bottomLine {
   background-color: var(--hint1);
   height: 5px;
+}
+
+footer p {
+  transition: 0.3s;
 }
 
 footer p:hover {
