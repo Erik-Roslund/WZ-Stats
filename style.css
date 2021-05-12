@@ -121,8 +121,9 @@ button img {
 }
 
 #topLine {
-  background-color: var(--prim1);
-  height: 50px;
+  display: flex;
+  background-color: var(--hint1);
+  height: 5px;
 }
 
 #help {
@@ -183,20 +184,26 @@ button img {
   cursor: pointer;
 }
 
-/* .items-body-content i {
-  align-self: center;
-  font-size: 15px;
-  color: #0b5aa2;
-  font-weight: bold;
-  animation: icon 1.5s infinite forwards;
-} */
+footer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--prim1);
+}
 
-/* @keyframes icon {
-  0%,
-  100% {
-    transform: translate(0px);
-  }
-  50% {
-    transform: translate(3px);
-  }
-} */
+footer div {
+  margin: 10px 10vw 10px 10vw;
+}
+
+h3 {
+  color: var(--hint1);
+}
+
+#bottomLine {
+  background-color: var(--hint1);
+  height: 5px;
+}
+
+footer p:hover {
+  color: var(--hint2);
+}
